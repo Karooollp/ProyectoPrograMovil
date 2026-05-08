@@ -7,7 +7,11 @@ import { useState } from 'react';
 export default function App() {
 
   //definición de una variabe de estadoen ReacN
-const [inputValue, setInputValue]=useState("");
+const [email, setEmail]=useState("");
+const [contraseña, setContraseña]=useState("");
+const [name, setName]=useState("");
+const [number, setNumber]=useState("");
+
 
   return (
     <View style={styles.container}>
@@ -15,10 +19,31 @@ const [inputValue, setInputValue]=useState("");
       <StatusBar style="auto" />
 
       <CustomInput 
-        type={'number'} 
-        placeholder={''} 
-        value={inputValue} 
-        onChange={setInputValue }  />
+        type={'text'} //tambien se puede borrar xq text es nada xd 
+        placeholder={'Ingresa tu nombre '} 
+        value={name} 
+        onChange={setName }
+       />
+
+      <CustomInput 
+        type={'number'}
+        placeholder={'Ingresa tu numero '} 
+        value={number} 
+        onChange={setNumber }
+       />
+       <CustomInput 
+        type={'email'} 
+        placeholder={'micorreo@@gmail.com'} 
+        value={email} 
+        onChange={setEmail }
+       />
+      <CustomInput 
+        type={'password'} 
+        placeholder={'Ingresa tu contraseña crack'} 
+        value={contraseña} 
+        onChange={setContraseña }
+       />
+
      <CustomButton
       title={"App"} 
       onPress={()=>{

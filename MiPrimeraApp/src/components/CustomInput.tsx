@@ -1,10 +1,11 @@
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, StyleSheet, KeyboardTypeOptions } from "react-native";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 
 type Props={
-    type: "text"|"email"|"pasword"|"number";
+    type?: "text"|"email"|"password"|"number";
     placeholder: string;
     value:string;
     onChange:(text:string)=> void
@@ -12,17 +13,31 @@ type Props={
 }
 
 
-export default function CustomInput({type,placeholder,value, onChange}: Props){
-    const [isSecureText, setIsSecureText]=useState(true)
-    const icon:  typeof Ionicons["name"] |undefined=
-    type==="email"?"at":
-        type==="pasword"? "lock-closed":  undefined
+export default function CustomInput({type="text",placeholder,value, onChange}: Props){
+    const [isSecureText, setIsSecureText]=useState(type==="password" )
+    const isPasswordField=type==="password";
+    const icon:  typeof MaterialIcons["name"] |undefined=
+    type==="email"?"alternate-email":
+        type==="password"? "lock":  undefined
+
+        const keyboardType:KeyboardTypeOptions=
+            type==="email"?"email-address":
+             type==="number" ? "phone-pad":
+             "default";
+
+    const getError=()=>{
+        if (type ==="email"&& !value.includes("@")) return"Correo Invalido mi lord";
+            if(type==="password" && value.length<4) return "Contraseña demasiada corta";
+                 if(type==="number" &&( value.length !=8 || value.includes("-"))) return "Numero invalido";
+
+    } 
+    const error=getError();  
 
     return (
         //wrapper
          <View style={styles.wrapper}>
-            <View style={styles.inputContainer}>
-                <Ionicons  name={icon as any }size={25} color="#00000"/>
+            <View style={[styles.inputContainer, error&& styles.inputError]}>
+                <MaterialIcons   name={icon as any }size={25} color="#00000"/>
 
                 <TextInput
                     placeholder ={placeholder}
@@ -30,8 +45,9 @@ export default function CustomInput({type,placeholder,value, onChange}: Props){
                     onChangeText={onChange}
                     style={styles.input}
                     secureTextEntry={isSecureText} 
+                    keyboardType={keyboardType}
             />
-            <TouchableOpacity
+            { isPasswordField && <TouchableOpacity
             onPress={
                 ()=>{
                     setIsSecureText(!isSecureText)
@@ -39,9 +55,12 @@ export default function CustomInput({type,placeholder,value, onChange}: Props){
             }
             >
                 <Ionicons name={isSecureText? "eye":"eye-off"} size={20} />
-            </TouchableOpacity>
+            </TouchableOpacity>}
         </View>
-         </View>
+       {
+       error&&
+        <Text style={styles.inputError}>{error}</Text>}
+     </View>
     );
 }
 
@@ -63,7 +82,7 @@ const styles=StyleSheet.create({
         borderWidth:1,
         borderRadius:9,
         backgroundColor:"#e3dbdb",
-        paddingHorizontal:15,
+        paddingHorizontal:10,
     },
 
     input:{
@@ -71,6 +90,12 @@ const styles=StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal:10,
 
+
+    },
+
+    inputError:{
+        color:"red",
+        borderColor:"red"
 
     }
 })
