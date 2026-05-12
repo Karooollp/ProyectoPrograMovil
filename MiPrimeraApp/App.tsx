@@ -6,12 +6,12 @@ import { useState } from 'react';
 import RegisterScren from './src/screens/RegisterScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './src/navigation/StackNavigator';
-import { navigationref } from './src/navigation/NavigationService';
+import { navigationRef  } from './src/navigation/NavigationService';
 
 export default function App() {
 
  return(
-  <NavigationContainer ref={navigationref}>
+  <NavigationContainer ref={navigationRef}>
     <StackNavigator/>
   </NavigationContainer>
  );

@@ -1,36 +1,28 @@
-import { Text, View } from "react-native";
+import { View, Text } from "react-native";
 import CustomButton from "../components/CustomButton";
-import { navigationref } from "../navigation/NavigationService";
+import { navigationRef } from "../navigation/NavigationService";
 
+export default function ProfileScreen({navigation}:any){
+    const handleLogout = () => {
+       if(navigationRef.isReady()){
+            navigationRef.reset({
+                //indice del arreglo routes, que indica la vista actual al momento reset el stack de navegacion
+                index: 0, 
+                //es un arreglo de objetos, para el cual cada objeto representa una ruta en el nuevo historial del stack
+                routes: [{name: 'Login'}],
+            })
+       }
 
-
-export default function ProfileScreen ({navigation}:any){
-    const handleLogout=()=>{
-        if (navigationref.isReady()){}
-        navigationref.reset({
-            //INDICE DEL ARREGLO ROTES Q MUESTRA LA VISTAAL HACER RESET 
-            index:0,
-
-            //ARREGLO DE OBJETOS    PARA QUE CADA ONJECT REOPRRSENTA EN EL NUEVO HISTORIAL DE STACK 
-            routes:[{name:"Login"}]
-        })
+        
     }
-
-    const HandleGotoLogin=()=>{
-        navigation.navigate("Login")
-
+    const handleGoToLogin = () =>{
+        navigation.navigate('Login');
     }
-
-    navigation.navigate("Login");
-
     return(
         <View>
-            <Text>Bienvenidos a Profile </Text>
-            <CustomButton title={"CERRAR SESION "} onPress={handleLogout} />
-            <CustomButton title={"IR A LOGIN "} onPress={HandleGotoLogin} />
-
+            <Text> Bienvenido a Profile</Text>
+            <CustomButton title={"Cerrar Sesion"} onPress={handleLogout}/>
+            <CustomButton title={"Ir a Login"} onPress={handleGoToLogin}/>
         </View>
-        
-    );
-  
+    )
 }

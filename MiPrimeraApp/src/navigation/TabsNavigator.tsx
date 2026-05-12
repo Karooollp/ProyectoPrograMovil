@@ -14,7 +14,7 @@ const Tab= createBottomTabNavigator<TabsParamList>();
 
 //utilizar el tabNavigator
 
-export default function tabNavigator(){
+export default function TabNavigator(){
 
     return(
         <Tab.Navigator>
