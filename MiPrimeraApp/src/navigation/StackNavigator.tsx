@@ -9,10 +9,8 @@ export type RootStackParamList={
     Home:{email:string},
     UserTabs:undefined,
 }
-
 //Crear el stack navigator el cual va a manejar la navegación 
 const Stack =createNativeStackNavigator <RootStackParamList>();
-
 //Utilizar el stack
 export default function StackNavigator (){
     return(
@@ -22,5 +20,4 @@ export default function StackNavigator (){
             <Stack.Screen name="UserTabs"component={TabNavigator}/>
         </Stack.Navigator>
     )
-
 }

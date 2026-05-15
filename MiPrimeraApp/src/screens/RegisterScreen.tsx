@@ -6,14 +6,11 @@ import { useState } from 'react';
 
 export default function RegisterScren (){
 
-  
     //definición de una variabe de estadoen ReacN
   const [email, setEmail]=useState("");
   const [contraseña, setContraseña]=useState("");
   const [name, setName]=useState("");
   const [number, setNumber]=useState("");
-  
-  
     return (
       <View style={styles.container}>
         <Text>Primera App Movil de Misap</Text>

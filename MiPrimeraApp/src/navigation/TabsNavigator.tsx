@@ -16,12 +16,8 @@ const Tab= createBottomTabNavigator<TabsParamList>();
 //utilizar el tabNavigator
 
 export default function TabNavigator(){
-    
-
-
 
     return(
- 
  <Tab.Navigator
   screenOptions={{
     tabBarActiveTintColor: "#583535",

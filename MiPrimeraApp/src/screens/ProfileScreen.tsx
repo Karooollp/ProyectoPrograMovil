@@ -12,8 +12,6 @@ export default function ProfileScreen({navigation}:any){
                 routes: [{name: 'Login'}],
             })
        }
-
-        
     }
     const handleGoToLogin = () =>{
         navigation.navigate('Login');
