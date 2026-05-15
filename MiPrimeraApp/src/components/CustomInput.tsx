@@ -62,8 +62,6 @@ export default function CustomInput({type="text",placeholder,value, onChange}: P
      </View>
     );
 }
-
-
 const styles=StyleSheet.create({
     wrapper:{
         marginBottom:10,
@@ -93,6 +91,5 @@ const styles=StyleSheet.create({
     inputError:{
         color:"red",
         borderColor:"red"
-
     }
 })
