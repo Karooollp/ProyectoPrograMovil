@@ -38,7 +38,6 @@ export default function CustomInput({type="text",placeholder,value, onChange}: P
          <View style={styles.wrapper}>
             <View style={[styles.inputContainer, error&& styles.inputError]}>
                 <MaterialIcons   name={icon as any }size={25} color="#00000"/>
-
                 <TextInput
                     placeholder ={placeholder}
                     value={value}
