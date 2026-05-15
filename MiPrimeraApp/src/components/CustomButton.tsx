@@ -7,7 +7,6 @@ type CustomButtonProps = {
     //unión
     variant?:"primary"|"secondary"|"tertiary";
   }
-
 export default function CustomButton({title, onPress, variant='primary'}: CustomButtonProps) {
   const styles= getStyles(variant);
     return (
@@ -26,10 +25,7 @@ const getStyles =(variant:"primary"|"secondary"|"tertiary")=>
         "#7edb56",
    padding:12,
    width:150,
-
-
   },
-
   buttonText:{
     color: variant==="tertiary"? "#000": "#f8f2f2",
   }
