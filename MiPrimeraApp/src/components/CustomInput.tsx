@@ -89,6 +89,8 @@ const styles=StyleSheet.create({
         width:"80%",
         paddingVertical: 10,
         paddingHorizontal:10,
+
+
     },
 
     inputError:{
