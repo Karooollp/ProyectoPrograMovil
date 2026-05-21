@@ -7,13 +7,15 @@ import RegisterScren from './src/screens/RegisterScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './src/navigation/StackNavigator';
 import { navigationRef  } from './src/navigation/NavigationService';
-
+import { AuthProvider } from "./src/contexts/AuthContexts";
 export default function App() {
 
  return(
-  <NavigationContainer ref={navigationRef}>
-    <StackNavigator/>
-  </NavigationContainer>
+   <AuthProvider>
+      <NavigationContainer ref={navigationRef}>
+        <StackNavigator/>
+      </NavigationContainer>
+   </AuthProvider>
  );
 }
 

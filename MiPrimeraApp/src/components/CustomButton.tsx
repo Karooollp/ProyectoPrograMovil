@@ -16,7 +16,7 @@ export default function CustomButton({title, onPress, variant='primary'}: Custom
     </TouchableOpacity>)
 }
 const getStyles =(variant:"primary"|"secondary"|"tertiary")=>
-  
+
   StyleSheet.create({
   button: {
    borderRadius: 6,
